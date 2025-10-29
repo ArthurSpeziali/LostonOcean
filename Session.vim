@@ -13,10 +13,17 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +0 deps/plug/lib/plug/router.ex
+badd +265 deps/plug/lib/plug/router.ex
+badd +0 config/test.exs
+badd +20 lib/loston_ocean_web/router.ex
+badd +5 lib/loston_ocean_web/controllers/page_controller.ex
+badd +0 lib/loston_ocean_web/controllers/page_html/landing.html.heex
 argglobal
 %argdel
-edit deps/plug/lib/plug/router.ex
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
+edit lib/loston_ocean_web/router.ex
 argglobal
 balt deps/plug/lib/plug/router.ex
 setlocal foldmethod=manual
@@ -29,13 +36,53 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 20 - ((19 * winheight(0) + 15) / 31)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 20
+normal! 031|
+tabnext
+edit lib/loston_ocean_web/controllers/page_controller.ex
+argglobal
+balt lib/loston_ocean_web/router.ex
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 5 - ((2 * winheight(0) + 15) / 31)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 5
+normal! 040|
+tabnext
+edit lib/loston_ocean_web/controllers/page_html/landing.html.heex
+argglobal
+balt lib/loston_ocean_web/controllers/page_controller.ex
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
-tabnext 1
+tabnext 3
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

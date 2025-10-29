@@ -17,7 +17,7 @@ defmodule LostonOceanWeb.Router do
   scope "/", LostonOceanWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", PageController, :landing
   end
 
   # Other scopes may use custom stacks.
